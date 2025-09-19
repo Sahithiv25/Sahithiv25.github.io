@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #fff5f7;
+            color: #4a3a3f;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #achievements {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #5d3b45;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ff85a2;
+        }
+
+        .leaderboard {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #ffe8ec;
+            max-height: 400px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Custom scrollbar */
+        .leaderboard::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .leaderboard::-webkit-scrollbar-track {
+            background: #ffe8ec;
+            border-radius: 4px;
+        }
+
+        .leaderboard::-webkit-scrollbar-thumb {
+            background: #ff85a2;
+            border-radius: 4px;
+        }
+
+        .leaderboard::-webkit-scrollbar-thumb:hover {
+            background: #ff6392;
+        }
+
+        .leaderboard-header {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            padding: 15px 20px;
+            background: #ff85a2;
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .leaderboard-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #ffe8ec;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .leaderboard-item:hover {
+            background: #fff5f7;
+        }
+
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank {
+            font-weight: 700;
+            font-size: 18px;
+            color: #ff85a2;
+            display: flex;
+            align-items: center;
+        }
+
+        .rank::before {
+            content: "🏆";
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .rank-1::before {
+            content: "🏆";
+        }
+
+        .rank-2::before {
+            content: "🏆";
+        }
+
+        .rank-3::before {
+            content: "🏆";
+        }
+
+        .achievement-name {
+            font-weight: 500;
+        }
+
+        .achievement-year {
+            text-align: right;
+            color: #777;
+        }
+
+        /* Floating elements for cuteness */
+        .floating {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            font-size: 24px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            color: #ff85a2;
+            animation-delay: 0s;
+        }
+
+        .floating:nth-child(2) {
+            top: 70%;
+            right: 5%;
+            color: #ffb6c1;
+            animation-delay: 2s;
+        }
+
+        .floating:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            color: #ff6392;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .leaderboard-header, .leaderboard-item {
+                grid-template-columns: 60px 1fr 70px;
+                padding: 12px 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .leaderboard-header, .leaderboard-item {
+                grid-template-columns: 50px 1fr 60px;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+            
+            .rank {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Achievements -->
+    <section id="achievements">
+        <div class="section-title">
+            <h2>Achievements</h2>
+        </div>
+        <div class="leaderboard">
+            <div class="leaderboard-header">
+                <div>Rank</div>
+                <div>Achievement</div>
+                <!-- <div>Year</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank rank-1">1st</div>
+                <div class="achievement-name">Winner - <strong>Maximally AI Hackathon</strong> - Social Impact</div>
+                <!-- <div class="achievement-year">2025</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank rank-2">1st</div>
+                <div class="achievement-name">Winner - <strong>Student Hacks</strong> - Skincare Recomendation System</div>
+                <!-- <div class="achievement-year">202</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">1st</div>
+                <div class="achievement-name">2025 Q2 <strong>AnitaB Mentor</strong></div>
+                <!-- <div class="achievement-year">2017</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">2nd</div>
+                <div class="achievement-name">Volunteer - <strong>INDUSTRY</strong> - The Product Conference 2025</div>
+                <!-- <div class="achievement-year">2015</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank rank-3">1st</div>
+                <div class="achievement-name">Winner - <strong>Designathon</strong> - Jobhunt</div>
+                <!-- <div class="achievement-year">2020</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">1st</div>
+                <div class="achievement-name">Winner - Innovation Prize - <strong>Probidden</strong></div>
+                <!-- <div class="achievement-year">2019</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">3rd</div>
+                <div class="achievement-name">Finalist - Code For Good by <strong>JP Morgan Chase</strong></div>
+                <!-- <div class="achievement-year">2018</div> -->
+            </div>
+            <div class="leaderboard-item">
+                <div class="rank">1st</div>
+                <div class="achievement-name">Winner - <strong>Image Splicing</strong> - Headstart by CBIT</div>
+                <!-- <div class="achievement-year">2016</div> -->
+            </div>  
+            <div class="leaderboard-item">
+                <div class="rank">1st</div>
+                <div class="achievement-name">Attended Grace Hopper Celebration 2024</div>
+                <!-- <div class="achievement-year">2014</div> -->
+            </div>
+        </div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating">⭐</div>
+        <div class="floating">❤️⭐</div>
+    </section>
+</body>
+</html>
